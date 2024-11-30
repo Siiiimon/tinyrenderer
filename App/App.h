@@ -6,6 +6,7 @@
 #define APP_H
 
 #include <iostream>
+#include <functional>
 #include <SDL3/SDL.h>
 
 
@@ -14,13 +15,14 @@ public:
     App();
     ~App();
 
-    void Show();
+    void Show(const std::function<void(SDL_Renderer*, const SDL_Rect&)>& renderFunc);
 private:
     static const int WIDTH = 800;
     static const int HEIGHT = 600;
 
     SDL_Window* window;
     SDL_Renderer* renderer;
+    SDL_Surface* surface;
 };
 
 

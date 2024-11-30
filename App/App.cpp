@@ -25,6 +25,8 @@ App::App() {
         SDL_Quit();
         return;
     }
+
+    surface = SDL_GetWindowSurface(window);
 }
 
 App::~App() {
@@ -34,7 +36,7 @@ App::~App() {
     SDL_Quit();
 }
 
-void App::Show() {
+void App::Show(const std::function<void(SDL_Renderer*, const SDL_Rect&)>& renderFunc) {
     bool isRunning = true;
     while (isRunning) {
         SDL_Event e;
@@ -46,8 +48,12 @@ void App::Show() {
             }
         }
 
-        SDL_SetRenderDrawColor(renderer, 0X01, 0X82, 0X3f, SDL_ALPHA_OPAQUE);
-        SDL_RenderClear(renderer);
+        SDL_Rect viewport;
+        SDL_GetRenderViewport(renderer, &viewport);
+
+        renderFunc(renderer, viewport);
+
         SDL_RenderPresent(renderer);
+        SDL_UpdateWindowSurface(window);
     }
 }
