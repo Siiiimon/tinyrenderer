@@ -16,6 +16,9 @@ public:
 
     void Show();
 private:
+    static const int WIDTH = 800;
+    static const int HEIGHT = 600;
+
     SDL_Window* window;
     SDL_Renderer* renderer;
 };

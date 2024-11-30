@@ -11,7 +11,7 @@ App::App() {
     }
     printf("Initialized SDL %d\n", SDL_GetVersion());
 
-    window = SDL_CreateWindow("tinyrenderer", 800, 600, 0);
+    window = SDL_CreateWindow("tinyrenderer", WIDTH, HEIGHT, 0);
     if (window == nullptr) {
         printf("Window could not be created! SDL_Error: %s\n", SDL_GetError());
         SDL_Quit();
