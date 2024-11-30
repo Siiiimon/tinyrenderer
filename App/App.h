@@ -5,7 +5,6 @@
 #ifndef APP_H
 #define APP_H
 
-#include <iostream>
 #include <functional>
 #include <SDL3/SDL.h>
 
